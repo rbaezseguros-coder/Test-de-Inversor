@@ -2,48 +2,84 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Test de Inversor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil de Inversor Profesional</title>
     <style>
-        body { font-family: sans-serif; background: #f4f4f9; padding: 20px; display: flex; justify-content: center; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
-        h2 { color: #333; }
-        .question { margin-bottom: 20px; }
-        label { display: block; margin: 10px 0; cursor: pointer; }
-        button { background: #000; color: #fff; border: none; padding: 12px 20px; border-radius: 6px; width: 100%; cursor: pointer; font-size: 16px; }
-        #resultado { margin-top: 20px; font-weight: bold; text-align: center; display: none; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #eef2f3; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 600px; width: 100%; }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
+        .question { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        p { font-weight: 600; color: #34495e; margin-bottom: 10px; }
+        label { display: block; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        label:hover { background: #f8f9fa; border-color: #3498db; }
+        input[type="radio"] { margin-right: 10px; }
+        button { background: #3498db; color: white; border: none; padding: 15px; border-radius: 8px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #2980b9; }
+        #resultado { margin-top: 30px; padding: 20px; border-radius: 8px; text-align: center; display: none; font-size: 1.2em; line-height: 1.5; }
+        .cons { background: #d4edda; color: #155724; }
+        .mod { background: #fff3cd; color: #856404; }
+        .agr { background: #f8d7da; color: #721c24; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h2>Test de Perfil de Inversor</h2>
-        <form id="quiz">
+    <div class="container">
+        <h1>Test del Inversor</h1>
+        <form id="investorForm">
             <div class="question">
-                <p>1. ¿Cuál es tu objetivo?</p>
-                <label><input type="radio" name="q1" value="1" required> Mantener mi capital</label>
-                <label><input type="radio" name="q1" value="3"> Ganar el máximo posible</label>
+                <p>1. ¿Cuál es tu objetivo principal con esta inversión?</p>
+                <label><input type="radio" name="q1" value="1" required> Proteger mis ahorros de la inflación.</label>
+                <label><input type="radio" name="q1" value="2"> Un equilibrio entre seguridad y ganancias.</label>
+                <label><input type="radio" name="q1" value="4"> Maximizar mis ganancias a largo plazo.</label>
             </div>
             <div class="question">
-                <p>2. ¿Si el mercado cae un 20%?</p>
-                <label><input type="radio" name="q2" value="1" required> Vendo todo por miedo</label>
-                <label><input type="radio" name="q2" value="3"> Compro más barato</label>
+                <p>2. ¿Por cuánto tiempo podrías dejar el dinero invertido?</p>
+                <label><input type="radio" name="q2" value="1"> Menos de 1 año.</label>
+                <label><input type="radio" name="q2" value="3"> De 1 a 3 años.</label>
+                <label><input type="radio" name="q2" value="5"> Más de 5 años.</label>
             </div>
-            <button type="button" onclick="calcular()">Ver mi perfil</button>
+            <div class="question">
+                <p>3. Si tu inversión cae un 15% en un mes, ¿qué harías?</p>
+                <label><input type="radio" name="q3" value="1"> Vendo todo para evitar más pérdidas.</label>
+                <label><input type="radio" name="q3" value="3"> No hago nada y espero a que suba.</label>
+                <label><input type="radio" name="q3" value="5"> Compro más porque está barato.</label>
+            </div>
+            <div class="question">
+                <p>4. ¿Qué porcentaje de tus ahorros vas a invertir?</p>
+                <label><input type="radio" name="q4" value="1"> Menos del 25%.</label>
+                <label><input type="radio" name="q4" value="3"> Entre el 25% y el 50%.</label>
+                <label><input type="radio" name="q4" value="5"> Casi todos mis ahorros.</label>
+            </div>
+             <div class="question">
+                <p>5. ¿Qué nivel de conocimiento tenés sobre finanzas?</p>
+                <label><input type="radio" name="q5" value="1"> Ninguno (solo Plazo Fijo).</label>
+                <label><input type="radio" name="q5" value="3"> Medio (Bonos y Fondos Comunes).</label>
+                <label><input type="radio" name="q5" value="5"> Alto (Acciones y Opciones).</label>
+            </div>
+            <button type="button" onclick="evaluar()">Obtener mi perfil</button>
         </form>
         <div id="resultado"></div>
     </div>
 
     <script>
-        function calcular() {
-            const form = document.getElementById('quiz');
-            let puntos = 0;
+        function evaluar() {
+            const form = document.getElementById('investorForm');
             const data = new FormData(form);
-            for (let value of data.values()) { puntos += parseInt(value); }
-
-            const resDiv = document.getElementById('resultado');
-            resDiv.style.display = 'block';
-            if (puntos <= 2) resDiv.innerHTML = "Perfil: CONSERVADOR 🛡️";
-            else if (puntos <= 4) resDiv.innerHTML = "Perfil: MODERADO ⚖️";
-            else resDiv.innerHTML = "Perfil: AGRESIVO 🔥";
+            let total = 0;
+            for (let v of data.values()) { total += parseInt(v); }
+            
+            const res = document.getElementById('resultado');
+            res.style.display = 'block';
+            
+            if (total <= 8) {
+                res.className = 'cons';
+                res.innerHTML = "<strong>Perfil CONSERVADOR 🛡️</strong><br>Tu prioridad es la seguridad. Te recomendamos Plazos Fijos, Fondos Money Market o Letras del Tesoro.";
+            } else if (total <= 18) {
+                res.className = 'mod';
+                res.innerHTML = "<strong>Perfil MODERADO ⚖️</strong><br>Buscás un mix. Podrías invertir en Bonos Corporativos (ONs) y algunos Fondos de Renta Mixta.";
+            } else {
+                res.className = 'agr';
+                res.innerHTML = "<strong>Perfil AGRESIVO 🔥</strong><br>Vas por todo. Tu cartera ideal incluye Acciones, CEDEARs y quizás Criptomonedas.";
+            }
         }
     </script>
 </body>
