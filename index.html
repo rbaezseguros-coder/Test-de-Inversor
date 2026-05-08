@@ -3,53 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Inversor</title>
+    <title>Test de Idoneidad - Perfil del Inversor</title>
     <style>
-        body { font-family: sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
-        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
-        h2 { color: #2c3e50; text-align: center; }
-        .campo { margin-bottom: 15px; }
-        input[type="text"], input[type="tel"] { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .pregunta { font-weight: bold; margin-top: 20px; display: block; }
-        label { display: block; padding: 10px; margin: 5px 0; border: 1px solid #eee; border-radius: 5px; cursor: pointer; }
-        label:hover { background: #f9f9f9; }
-        button { background: #007bff; color: white; border: none; padding: 15px; border-radius: 5px; width: 100%; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f9; color: #333; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); max-width: 700px; width: 100%; }
+        h1 { color: #1a3a5a; text-align: center; margin-bottom: 5px; }
+        p.desc { text-align: center; color: #666; margin-bottom: 30px; }
+        .section-title { background: #1a3a5a; color: white; padding: 12px; border-radius: 6px; margin-top: 25px; margin-bottom: 15px; font-weight: bold; }
+        .question { margin-top: 20px; font-weight: bold; color: #2c3e50; line-height: 1.4; }
+        label { display: block; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; transition: 0.2s; font-weight: normal; }
+        label:hover { background: #f0f7ff; border-color: #3498db; }
+        input[type="text"], input[type="tel"] { width: 100%; padding: 12px; margin-top: 8px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        button { background: #27ae60; color: white; border: none; padding: 18px; border-radius: 8px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 40px; transition: 0.3s; }
+        button:hover { background: #1e8449; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Test del Inversor</h2>
+        <h1>Test del Inversor</h1>
+        <p class="desc">Completá el formulario para recibir un asesoramiento acorde a tu perfil de riesgo.</p>
+        
         <form action="https://formspree.io/f/mdabwzgr"method="POST">
             
-            <!-- DATOS BÁSICOS -->
-            <div class="campo">
-                <input type="text" name="Nombre" placeholder="Nombre completo" required>
-            </div>
-            <div class="campo">
-                <input type="tel" name="Telefono" placeholder="Teléfono / WhatsApp" required>
-            </div>
+            <div class="section-title">Datos de Contacto</div>
+            <div class="question">Nombre Completo:</div>
+            <input type="text" name="Nombre" required>
+            <div class="question">Teléfono / WhatsApp:</div>
+            <input type="tel" name="Telefono" placeholder="+54 9..." required>
 
-            <!-- PREGUNTAS -->
-            <span class="pregunta">1. ¿Cuál es tu experiencia en inversiones?</span>
-            <label><input type="radio" name="Exp" value="Nula" required> Nula</label>
-            <label><input type="radio" name="Exp" value="Media"> Media</label>
-            <label><input type="radio" name="Exp" value="Alta"> Alta</label>
+            <div class="section-title">Cuestionario de Idoneidad</div>
+            
+            <div class="question">1. Tu edad se encuentra dentro del rango de:</div>
+            <label><input type="radio" name="Edad" value="Menos de 25" required> A. Menos de 25 años.</label>
+            <label><input type="radio" name="Edad" value="25-35"> B. De 25 a 35 años.</label>
+            <label><input type="radio" name="Edad" value="36-55"> C. De 36 a 55 años.</label>
+            <label><input type="radio" name="Edad" value="56 o más"> D. De 56 años o más.</label>
 
-            <span class="pregunta">2. ¿Por cuánto tiempo podés invertir?</span>
-            <label><input type="radio" name="Plazo" value="Corto" required> Menos de 1 año</label>
-            <label><input type="radio" name="Plazo" value="Medio"> 1 a 3 años</label>
-            <label><input type="radio" name="Plazo" value="Largo"> Más de 3 años</label>
+            <div class="question">2. ¿Cuánto conocés del Mercado de Capitales (Acciones, Bonos, ONs, Letras, FCI y CEDEAR)?</div>
+            <label><input type="radio" name="Conocimiento" value="Ninguno" required> A. No poseo conocimiento.</label>
+            <label><input type="radio" name="Conocimiento" value="Básico"> B. Tengo conocimientos básicos.</label>
+            <label><input type="radio" name="Conocimiento" value="Medio"> C. Tengo conocimientos de riesgo y rentabilidad.</label>
+            <label><input type="radio" name="Conocimiento" value="Profesional"> D. Poseo un profundo conocimiento (Profesional).</label>
 
-            <span class="pregunta">3. Si tu inversión baja un 10%, ¿qué hacés?</span>
-            <label><input type="radio" name="Riesgo" value="Vender" required> Vendo por miedo</label>
-            <label><input type="radio" name="Riesgo" value="Mantener"> Mantengo y espero</label>
-            <label><input type="radio" name="Riesgo" value="Comprar"> Compro más</label>
+            <div class="question">3. ¿Qué experiencia tenés como inversionista?</div>
+            <label><input type="radio" name="Experiencia" value="Ninguna" required> A. Ninguna.</label>
+            <label><input type="radio" name="Experiencia" value="Baja"> B. Baja.</label>
+            <label><input type="radio" name="Experiencia" value="Media"> C. Media.</label>
+            <label><input type="radio" name="Experiencia" value="Alta"> D. Alta.</label>
 
-            <span class="pregunta">4. ¿Cuál es tu objetivo?</span>
-            <label><input type="radio" name="Meta" value="Ahorro" required> Proteger mis ahorros</label>
-            <label><input type="radio" name="Meta" value="Ganancia"> Ganar lo máximo posible</label>
+            <div class="question">4. ¿Aproximadamente, qué porcentaje de tus ingresos mensuales ahorrás?</div>
+            <label><input type="radio" name="Ahorro_Mensual" value="Menos 5%" required> A. Menos del 5%.</label>
+            <label><input type="radio" name="Ahorro_Mensual" value="5-20%"> B. Entre el 5% y el 20%.</label>
+            <label><input type="radio" name="Ahorro_Mensual" value="21-50%"> C. Entre el 21% y el 50%.</label>
+            <label><input type="radio" name="Ahorro_Mensual" value="Mas 50%"> D. Más del 50%.</label>
 
-            <button type="submit">Enviar Test</button>
+            <div class="question">5. ¿Qué porcentaje de tus ahorros estás dispuesto a destinar al Mercado de Capitales?</div>
+            <label><input type="radio" name="Capital_Destinado" value="Menos 25%" required> A. Menos del 25%.</label>
+            <label><input type="radio" name="Capital_Destinado" value="25-40%"> B. Entre el 25% y el 40%.</label>
+            <label><input type="radio" name="Capital_Destinado" value="41-65%"> C. Entre el 41% y el 65%.</label>
+            <label><input type="radio" name="Capital_Destinado" value="Mas 65%"> D. Más del 65%.</label>
+
+            <div class="question">6. ¿Cuánto tiempo conservarías esta inversión?</div>
+            <label><input type="radio" name="Plazo" value="Menos 180 dias" required> A. Menos de 180 días.</label>
+            <label><input type="radio" name="Plazo" value="180 a 1 año"> B. Entre 180 días y 1 año.</label>
+            <label><input type="radio" name="Plazo" value="1 a 2 años"> C. De 1 a 2 años.</label>
+            <label><input type="radio" name="Plazo" value="Mas 2 años"> D. Más de 2 años.</label>
+
+            <div class="question">7. Al realizar una inversión, ¿qué opción preferís?</div>
+            <label><input type="radio" name="Preferencia" value="Preservar" required> A. Preservar el dinero con rentabilidad mínima.</label>
+            <label><input type="radio" name="Preferencia" value="Ganancia Estable"> B. Ganancia superior al plazo fijo con variación mínima.</label>
+            <label><input type="radio" name="Preferencia" value="Maximizar"> C. Obtener ganancia significativa asumiendo riesgos.</label>
+
+            <div class="question">8. ¿Qué porcentaje de disminución del capital estarías dispuesto a asumir?</div>
+            <label><input type="radio" name="Perdida_Asumible" value="0-5%" required> A. Entre 0% y el 5%.</label>
+            <label><input type="radio" name="Perdida_Asumible" value="5-15%"> B. Entre el 5% y el 15%.</label>
+            <label><input type="radio" name="Perdida_Asumible" value="15-30%"> C. Entre 15% y 30%.</label>
+            <label><input type="radio" name="Perdida_Asumible" value="Mas 30%"> D. Más de 30%.</label>
+
+            <div class="question">9. Si tu inversión se desvaloriza un 15% en un mes, ¿cómo procederías?</div>
+            <label><input type="radio" name="Procedimiento_Baja" value="Vender" required> A. Vendería para evitar mayor pérdida.</label>
+            <label><input type="radio" name="Procedimiento_Baja" value="Transferir"> B. Transferiría activos a menor riesgo.</label>
+            <label><input type="radio" name="Procedimiento_Baja" value="Esperar"> C. Esperaría que recupere su valor.</label>
+            <label><input type="radio" name="Procedimiento_Baja" value="Comprar mas"> D. Compraría más aprovechando el precio bajo.</label>
+
+            <button type="submit">Enviar Respuestas para Análisis</button>
         </form>
     </div>
 </body>
