@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Test de Inversor</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f9; padding: 20px; display: flex; justify-content: center; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
+        h2 { color: #333; }
+        .question { margin-bottom: 20px; }
+        label { display: block; margin: 10px 0; cursor: pointer; }
+        button { background: #000; color: #fff; border: none; padding: 12px 20px; border-radius: 6px; width: 100%; cursor: pointer; font-size: 16px; }
+        #resultado { margin-top: 20px; font-weight: bold; text-align: center; display: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Test de Perfil de Inversor</h2>
+        <form id="quiz">
+            <div class="question">
+                <p>1. ¿Cuál es tu objetivo?</p>
+                <label><input type="radio" name="q1" value="1" required> Mantener mi capital</label>
+                <label><input type="radio" name="q1" value="3"> Ganar el máximo posible</label>
+            </div>
+            <div class="question">
+                <p>2. ¿Si el mercado cae un 20%?</p>
+                <label><input type="radio" name="q2" value="1" required> Vendo todo por miedo</label>
+                <label><input type="radio" name="q2" value="3"> Compro más barato</label>
+            </div>
+            <button type="button" onclick="calcular()">Ver mi perfil</button>
+        </form>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcular() {
+            const form = document.getElementById('quiz');
+            let puntos = 0;
+            const data = new FormData(form);
+            for (let value of data.values()) { puntos += parseInt(value); }
+
+            const resDiv = document.getElementById('resultado');
+            resDiv.style.display = 'block';
+            if (puntos <= 2) resDiv.innerHTML = "Perfil: CONSERVADOR 🛡️";
+            else if (puntos <= 4) resDiv.innerHTML = "Perfil: MODERADO ⚖️";
+            else resDiv.innerHTML = "Perfil: AGRESIVO 🔥";
+        }
+    </script>
+</body>
+</html>
