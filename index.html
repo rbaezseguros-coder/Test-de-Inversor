@@ -3,47 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Inversor Profesional</title>
+    <title>Análisis de Perfil de Inversor</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
-        h2 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        .field { margin-bottom: 20px; }
-        input[type="text"], input[type="tel"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
-        label { display: block; padding: 12px; margin: 8px 0; border: 1px solid #eee; border-radius: 8px; cursor: pointer; transition: 0.2s; }
-        label:hover { background: #e8f4fd; }
-        button { background: #3498db; color: white; border: none; padding: 15px; border-radius: 8px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; }
-        #mensaje-final { display:none; text-align: center; padding: 20px; background: #d4edda; color: #155724; border-radius: 8px; margin-top: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 550px; width: 100%; }
+        h2 { color: #2c3e50; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-bottom: 25px; }
+        .section-title { font-weight: bold; color: #3498db; margin-top: 20px; display: block; border-left: 4px solid #3498db; padding-left: 10px; }
+        .field { margin-bottom: 25px; }
+        input[type="text"], input[type="tel"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; margin-top: 10px; }
+        label { display: block; padding: 12px; margin: 8px 0; border: 1px solid #eee; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fff; }
+        label:hover { background: #f1f9ff; border-color: #3498db; }
+        input[type="radio"] { margin-right: 10px; }
+        button { background: #3498db; color: white; border: none; padding: 18px; border-radius: 8px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        button:hover { background: #217dbb; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>Mi Perfil de Inversor</h2>
-        <form id="testForm" action="https://formspree.io/f/mdabwzgr" method="POST">
+        <h2>Test de Perfil de Inversor</h2>
+        <!-- REEMPLAZA "TU_ID_AQUI" CON TU CÓDIGO DE FORMSPREE -->
+        <form action="https://formspree.io" method="POST">
             
+            <span class="section-title">Datos del Cliente</span>
             <div class="field">
-                <p><strong>Tus Datos:</strong></p>
                 <input type="text" name="Nombre" placeholder="Nombre completo" required>
-                <input type="tel" name="WhatsApp" placeholder="WhatsApp (ej: +549...)" required style="margin-top:10px;">
+                <input type="tel" name="WhatsApp" placeholder="WhatsApp (ej: +54 9 11...)" required>
+            </div>
+
+            <span class="section-title">Perfil de Riesgo</span>
+            <div class="field">
+                <p><strong>1. ¿Cuál es su objetivo principal?</strong></p>
+                <label><input type="radio" name="Objetivo" value="Conservar" required> Preservar el capital (no perder)</label>
+                <label><input type="radio" name="Objetivo" value="Crecer"> Crecimiento moderado</label>
+                <label><input type="radio" name="Objetivo" value="Especular"> Máximo rendimiento aceptando riesgo</label>
             </div>
 
             <div class="field">
-                <p><strong>1. ¿Cuál es tu objetivo?</strong></p>
-                <label><input type="radio" name="p1" value="Conservador" required> No perder capital (Seguridad)</label>
-                <label><input type="radio" name="p1" value="Agresivo"> Maximizar ganancias (Riesgo)</label>
+                <p><strong>2. Si su inversión cae un 20% en un mes, ¿qué hace?</strong></p>
+                <label><input type="radio" name="Reaccion" value="Vende" required> Vendo todo para retirar lo que queda</label>
+                <label><input type="radio" name="Reaccion" value="Mantiene"> Mantengo y espero que recupere</label>
+                <label><input type="radio" name="Reaccion" value="Compra"> Compro más aprovechando la baja</label>
+            </div>
+
+            <span class="section-title">Situación Financiera</span>
+            <div class="field">
+                <p><strong>3. ¿Qué porcentaje de sus ingresos puede ahorrar?</strong></p>
+                <label><input type="radio" name="Ahorro" value="Bajo" required> Menos del 10%</label>
+                <label><input type="radio" name="Ahorro" value="Medio"> Entre el 10% y el 30%</label>
+                <label><input type="radio" name="Ahorro" value="Alto"> Más del 30%</label>
             </div>
 
             <div class="field">
-                <p><strong>2. ¿Plazo de la inversión?</strong></p>
-                <label><input type="radio" name="p2" value="Corto" required> Menos de 1 año</label>
-                <label><input type="radio" name="p2" value="Largo"> Más de 3 años</label>
+                <p><strong>4. ¿Por cuánto tiempo no necesitará este dinero?</strong></p>
+                <label><input type="radio" name="Plazo" value="6meses" required> Menos de 6 meses</label>
+                <label><input type="radio" name="Plazo" value="2anios"> De 1 a 2 años</label>
+                <label><input type="radio" name="Plazo" value="Largo"> Más de 5 años</label>
             </div>
 
-            <button type="submit">Enviar y Finalizar</button>
+            <div class="field">
+                <p><strong>5. ¿Qué experiencia tiene en inversiones?</strong></p>
+                <label><input type="radio" name="Experiencia" value="Nula" required> Ninguna (solo Plazo Fijo/Dólar)</label>
+                <label><input type="radio" name="Experiencia" value="Media"> He operado Bonos o Fondos Comunes</label>
+                <label><input type="radio" name="Experiencia" value="Avanzada"> Opero Acciones, CEDEARs o Criptos</label>
+            </div>
+
+            <button type="submit">Enviar Análisis Profesional</button>
         </form>
-        <div id="mensaje-final">
-            ¡Gracias! Ya recibí tus datos. En breve te contactaré para asesorarte sobre tu perfil.
-        </div>
     </div>
 </body>
 </html>
