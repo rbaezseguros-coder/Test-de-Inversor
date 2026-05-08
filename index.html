@@ -3,43 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Inversor</title>
+    <title>Test de Inversor Profesional</title>
     <style>
-        body { font-family: sans-serif; background: #f0f2f5; padding: 20px; display: flex; justify-content: center; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
-        h2 { color: #1a73e8; text-align: center; }
-        .step { margin-bottom: 20px; }
-        input[type="text"], input[type="tel"] { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        label { display: block; margin: 10px 0; padding: 10px; border: 1px solid #eee; border-radius: 6px; cursor: pointer; }
-        button { background: #1a73e8; color: white; border: none; padding: 15px; border-radius: 6px; width: 100%; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
+        h2 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .field { margin-bottom: 20px; }
+        input[type="text"], input[type="tel"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+        label { display: block; padding: 12px; margin: 8px 0; border: 1px solid #eee; border-radius: 8px; cursor: pointer; transition: 0.2s; }
+        label:hover { background: #e8f4fd; }
+        button { background: #3498db; color: white; border: none; padding: 15px; border-radius: 8px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; }
+        #mensaje-final { display:none; text-align: center; padding: 20px; background: #d4edda; color: #155724; border-radius: 8px; margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>Descubrí tu Perfil de Inversor</h2>
-        <!-- CAMBIA EL ID DE ABAJO POR EL QUE TE DA FORMSPREE -->
-        <form action="https://formspree.io/f/mdabwzgr" method="POST">
+        <h2>Mi Perfil de Inversor</h2>
+        <form id="testForm" action="https://formspree.io/f/mdabwzgr" method="POST">
             
-            <div class="step">
-                <p><strong>Tus datos de contacto:</strong></p>
-                <input type="text" name="nombre" placeholder="Tu Nombre completo" required>
-                <input type="tel" name="whatsapp" placeholder="Tu WhatsApp (ej: +54911...)" required>
+            <div class="field">
+                <p><strong>Tus Datos:</strong></p>
+                <input type="text" name="Nombre" placeholder="Nombre completo" required>
+                <input type="tel" name="WhatsApp" placeholder="WhatsApp (ej: +549...)" required style="margin-top:10px;">
             </div>
 
-            <div class="step">
-                <p><strong>1. ¿Cuál es tu prioridad?</strong></p>
-                <label><input type="radio" name="objetivo" value="Conservador" required> No perder dinero</label>
-                <label><input type="radio" name="objetivo" value="Agresivo"> Ganar lo máximo posible</label>
+            <div class="field">
+                <p><strong>1. ¿Cuál es tu objetivo?</strong></p>
+                <label><input type="radio" name="p1" value="Conservador" required> No perder capital (Seguridad)</label>
+                <label><input type="radio" name="p1" value="Agresivo"> Maximizar ganancias (Riesgo)</label>
             </div>
 
-            <div class="step">
-                <p><strong>2. ¿Por cuánto tiempo invertirías?</strong></p>
-                <label><input type="radio" name="plazo" value="Corto" required> Menos de 1 año</label>
-                <label><input type="radio" name="plazo" value="Largo"> Más de 3 años</label>
+            <div class="field">
+                <p><strong>2. ¿Plazo de la inversión?</strong></p>
+                <label><input type="radio" name="p2" value="Corto" required> Menos de 1 año</label>
+                <label><input type="radio" name="p2" value="Largo"> Más de 3 años</label>
             </div>
 
-            <button type="submit">Enviar y ver resultados</button>
+            <button type="submit">Enviar y Finalizar</button>
         </form>
+        <div id="mensaje-final">
+            ¡Gracias! Ya recibí tus datos. En breve te contactaré para asesorarte sobre tu perfil.
+        </div>
     </div>
 </body>
 </html>
